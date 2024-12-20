@@ -1,0 +1,40 @@
+﻿@page
+@model TestTask_Frontend.Pages.Announcements.IndexModel
+@{
+    ViewData["Title"] = "Announcements";
+}
+
+<h1>Announcements</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created Date</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>SubCategory</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var announcement in Model.Announcements)
+        {
+            <tr>
+                <td>@announcement.Title</td>
+                <td>@announcement.Description</td>
+                <td>@announcement.CreatedDate</td>
+                <td>@announcement.Status</td>
+                <td>@announcement.Category</td>
+                <td>@announcement.SubCategory</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@announcement.Id">Edit</a> |
+                    <a asp-page="Delete" asp-route-id="@announcement.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="Create">Create New</a>
